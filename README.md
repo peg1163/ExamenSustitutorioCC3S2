@@ -58,6 +58,8 @@ Ahora si ejecutamos cucumber veremos que el background logra ejecutarse correcta
 
 ![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/fc7ebf20-435d-43f0-8910-c23a69c30a5b)
 
+Pero aun asi hay algunos errores 
+
 ## Parte 2
 
 ### Pregunta 1 
@@ -76,6 +78,11 @@ de autorizacion controlamos permisos , movimientos , o acciones que tiene este u
 
 
 ### Pregunta 3 
+Middleware : 
+podriamos definirlo como un enlace entre la solicitud hacia la aplicacion y la respuesta de esta hacia el usuario , los middleware realizan diferentes tareas en el proceso de solicitud respuesta , en rails tenemos no solo 1 middleware , si ejecutamos el comando rake:middleware podremos observar los middleware que tenemos en la aplicacion :  como por ejemplo la aplicaion de la parte 1 
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/31a325a6-dcea-4542-a1ac-5bf65f4a2e09)
+
 
  ¿Qué pasa si omite el middleware de Rack y se pasa la solicitud al enrutador directamente (Rails.application.routes.call(request))?
 
@@ -89,7 +96,15 @@ de inmediato (por ejemplo, PostsController.action(:index).call(request))?
 
 al pasar de lado el controlador se podrian perder funcionalidades (como en el caso anterior) como traduccion de rutas 
 y tener encuenta que si tomas por alto el enrutador , tambien pasarias por alto el midleware 
- 
+
+Ahora una forma de intentarlo seria con el siguiente codigo sacado de https://github.com/yhirano55/trace_location?tab=readme-ov-file : 
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/9ab5df7d-89fc-4bf7-9fed-2e128f60a572)
+  
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/00c824c4-cc4a-440f-9f30-d869841505da)
+
+pero al ejecutarlo tenemos algunos errores 
+
  ### Pregunta 4
 ¿Puedes combinarlo con la calculadora de churn para mostrar los N archivos  por churn* complejidad?. 
  claro , el comando seria masomenos el siguiente :
@@ -99,6 +114,12 @@ y tener encuenta que si tomas por alto el enrutador , tambien pasarias por alto 
 al ejecutarlo saldria lo siguiente :
 
 ![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/4d3de922-25dc-47ad-8985-78965959ae40)
+
+Ahora ,hay una forma mas facil de haccer esta comparacion de complejidad y de cambios : 
+con ayuda de la gema attracttor podemos saber , los cambios y compararlos con la complejidad , si ejecutamos "attractor report -p app/models " nos despliega la siguiente html :
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/7ba31ece-4ba3-4033-8240-c3cbb5d63eac)
+
 
 
 ## Parte 3
