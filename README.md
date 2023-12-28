@@ -58,7 +58,63 @@ Ahora si ejecutamos cucumber veremos que el background logra ejecutarse correcta
 
 ![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/fc7ebf20-435d-43f0-8910-c23a69c30a5b)
 
-Pero aun asi hay algunos errores 
+Pero aun asi hay algunos errores como 
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/05367bd9-5c39-4ed5-b3f5-7cac5d80c878)
+
+ Para esto tenemos que añadir el area para director en la vista de edicion 
+ , tambien cambiar el tipo de formulario de form_tag a form_for , ya que no se asociaba correctamente con el modelo movie .Haciendo estos cambios observaremos que pasan ciertas pruebas del primer escenario . 
+ 
+ ![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/d8a7dbcc-02ed-4436-a045-163b76919923)
+
+Si somos muy meticulosos , nos daremos cuenta que hay una parte naraja justo debajo de la parte verde , esto nos dice que aun no hemos definido ciertos pasos (steps) por lo que tendremos que definirlos en web_steps 
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/b20992a2-b0c5-4475-b263-bef089ec9c24)
+
+definimos el step , y procedemos a correrlo :  
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/077a0eae-cf39-4762-825a-14dd660b5d19)
+
+observamos que no se guardo nombre del director , pero porque pasa esto ? , revisemos si el controlador esta guardandolo correctamente 
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/406f9e02-25a0-47b2-8bf4-388c6399822a)
+
+vemos que los parametros de movie_params no esta incluido el director por eso cuando el controlador actualiza valores de la tabla , no cuanta al director , agregamos el parametro y volvemos a ejecutar la prueba .
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/83d8dc8a-299c-457d-a58e-9a185ca6550c)
+
+vemos que el primer escenario a pasado el test correctamente 
+Para el segundo escenario veremos que esta en rojo :
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/69e2ee8b-8dea-4786-bd20-00c8854efea0)
+
+esto es porque aun no hemos definido la ruta en donde estara trabajando , entonces cambiamos esto , en el archivo paths
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/33b0e756-6dd1-462f-86d7-5fb9d7eb774a)
+
+asignandole la ruta de movies y ejecutamos nuevamente la prueba :
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/f789139c-8e8f-4bc6-9fbe-120e7d9edf02)
+
+vemos que ahora corre correctamente , pero solo un paso , aun nos falta lo demas , parece que tenemos errores 
+
+Para que pase primero debemos de crear alguna vistas ,   configurar algunas rutas  como por ejemplo : 
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/788ab7a4-f421-4cdf-8faf-cd4385ce5e06)
+
+esto nos dara la ruta para poder entrar a una vista que contendra las peliculas con los mismos directores ,modificamos un poco la vista show para que aparexca un boton extra :
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/b93c7909-a2b3-44e8-88b1-ef9057f1fad2)
+
+tambien tenemos que modificar el controlador 
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/db429b0d-d6a1-46e9-9287-38e95f69c31c)
+
+y no nos olvidemos del modelo 
+
+![image](https://github.com/peg1163/ExamenSustitutorioCC3S2/assets/92898224/08fa4248-6372-4dad-9b4c-374b0a9eb35a)
+
+ahora este metodo es un de clase esta buscando las peliculas que comparten el mismo director , sin importar si es de una instancia en espcifica . 
 
 ## Parte 2
 
