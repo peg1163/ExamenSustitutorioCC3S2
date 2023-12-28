@@ -1,31 +1,31 @@
-<!--  This file is app/views/movies/show_by_director.html.erb -->
+<!-- app/views/movies/show_by_director.html.erb -->
 <h2>Other Movies by <%= @director %></h2>
 
-<table class="table table-striped col-md-12" id="movies">
-  <thead>
-    <tr>
-      <th>Movie Title</th>
-      <th>Rating</th>
-      <th>Release Date</th>
-      <th>More Info</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td>
-          <%= movie.title %>
-        </td>
-        <td>
-          <%= movie.rating %>
-        </td>
-        <td>
-          <%= movie.release_date %>
-        </td>
-        <td>
-          <%= link_to "More about #{movie.title}", movie_path(movie) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @movies_with_same_director  %>
+  <table class="table table-striped col-md-12" id="movies">
+    <thead>
+      <!-- encabezados de la tabla -->
+    </thead>
+    <tbody>
+      <% @movies_with_same_director.each do |movie| %>
+        <tr>
+          <td>
+            <%= movie.title %>
+          </td>
+          <td>
+            <%= movie.rating %>
+          </td>
+          <td>
+            <%= movie.release_date %>
+          </td>
+          <td>
+            <%= link_to "More about #{movie.title}", movie_path(movie) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No movies found.</p>
+<% end %>
+
